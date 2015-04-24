@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">MiLibros</string>
+    <string name="app_name">Mi Libros</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="label_author">Autor</string>
+    <string name="label_rate">Nota</string>
+    <string name="label_status">Estado</string>
+    <string name="save_button_text">Guardar!</string>
 </resources>

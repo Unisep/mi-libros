@@ -40,16 +40,16 @@ public class NewBookActivity extends Activity {
         String status = ((RadioButton) findViewById(selectedId)).getText().toString();
 
         book.setTitle(textTitle.getText().toString());
-        book.setAuthor(textRate.getText().toString());
+        book.setAuthor(textAuthor.getText().toString());
         book.setStatus(Integer.valueOf(status));
         book.setRate(Float.valueOf(textRate.getText().toString()));
 
         BookDAO dao = new BookDAO(this);
         dao.save(book);
 
-        Intent retorno = new Intent();
+        Intent result = new Intent();
 
-        setResult(RESULT_OK, retorno);
+        setResult(RESULT_OK, result);
         finish();
     }
 }

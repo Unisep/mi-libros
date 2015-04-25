@@ -6,13 +6,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
-import com.brunoocasali.milibros.adapter.TarefaCursorAdapter;
+import com.brunoocasali.milibros.adapter.BookCursorAdapter;
 import com.brunoocasali.milibros.model.BookDAO;
 import com.brunoocasali.milibros.vo.BookVO;
 
 public class MainActivity extends ListActivity {
 
-    private TarefaCursorAdapter adapter;
+    private BookCursorAdapter adapter;
     private Cursor cursor;
     private BookDAO dao;
 
@@ -24,7 +24,7 @@ public class MainActivity extends ListActivity {
 
         cursor = dao.list();
 
-        adapter = new TarefaCursorAdapter(this, cursor, 0);
+        adapter = new BookCursorAdapter(this, cursor, 0);
 
         setListAdapter(adapter);
 

@@ -8,7 +8,6 @@ import android.view.*;
 import android.widget.AdapterView;
 import com.brunoocasali.milibros.adapter.BookCursorAdapter;
 import com.brunoocasali.milibros.model.BookDAO;
-import com.brunoocasali.milibros.vo.BookVO;
 
 public class MainActivity extends ListActivity {
 
@@ -23,12 +22,8 @@ public class MainActivity extends ListActivity {
         dao = new BookDAO(this);
 
         cursor = dao.list();
-
         adapter = new BookCursorAdapter(this, cursor, 0);
-
         setListAdapter(adapter);
-
-
         registerForContextMenu(getListView());
     }
 
@@ -37,7 +32,7 @@ public class MainActivity extends ListActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_contexto, menu);
+        inflater.inflate(R.menu.context_menu, menu);
     }
 
     @Override
@@ -57,13 +52,9 @@ public class MainActivity extends ListActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-
         MenuInflater inflater = getMenuInflater();
 
-
         inflater.inflate(R.menu.menu_main, menu);
-
         return true;
     }
 
@@ -74,23 +65,19 @@ public class MainActivity extends ListActivity {
             Intent intent = new Intent(this, NewBookActivity.class);
             startActivityForResult(intent, 0);
         }
+
         return true;
     }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        BookVO trabalho = (BookVO) data.getSerializableExtra("Tarefa");
         if (requestCode == 0 && resultCode == RESULT_OK) {
-
             cursor = dao.list();
+
             adapter.changeCursor(cursor);
             adapter.notifyDataSetChanged();
         }
 
         adapter.notifyDataSetChanged();
     }
-
 }

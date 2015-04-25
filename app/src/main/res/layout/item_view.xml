@@ -22,19 +22,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/label_author"
             android:id="@+id/label_author"
-            android:layout_alignTop="@+id/label_rate"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp" />
-
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/label_title"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/label_rate"
-            android:id="@+id/label_rate"
-            android:textStyle="bold"
-            android:layout_below="@+id/label_title"
-            android:layout_alignParentEnd="false" android:layout_marginLeft="300dp"
-            />
+            android:id="@+id/label_rating" android:layout_below="@+id/label_title"
+            android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

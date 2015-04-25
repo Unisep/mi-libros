@@ -35,9 +35,11 @@ public class BookCursorAdapter extends CursorAdapter {
         TextView labelTitle = (TextView) view.findViewById(R.id.label_title);
         labelTitle.setText(cursor.getString(cursor.getColumnIndex(DatabaseConstraint.COLUMN_TITLE)));
 
-        TextView labelRate = (TextView) view.findViewById(R.id.label_rate);
-        int rateIndex = cursor.getColumnIndex(DatabaseConstraint.COLUMN_RATE);
-        labelRate.setText(String.valueOf(cursor.getFloat(rateIndex)));
+        TextView labelRate = (TextView) view.findViewById(R.id.label_rating);
+        
+        Float value = cursor.getFloat(cursor.getColumnIndex(DatabaseConstraint.COLUMN_RATE));
+        if (value > 0)
+            labelRate.setText(String.valueOf(value));
 
         TextView labelAuthor = (TextView) view.findViewById(R.id.label_author);
         labelAuthor.setText(cursor.getString(cursor.getColumnIndex(DatabaseConstraint.COLUMN_AUTHOR)));

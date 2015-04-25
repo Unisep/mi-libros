@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.brunoocasali.milibros.model.BookDAO;
 import com.brunoocasali.milibros.vo.BookVO;
@@ -37,20 +36,19 @@ public class NewBookActivity extends Activity {
         BookVO book = new BookVO();
 
         int selectedId = radioGroupStatus.getCheckedRadioButtonId();
-//        String status = ((RadioButton) findViewById(selectedId)).getText().toString();
-        int status = 4;
+        int status = 1;
 
-        if (selectedId == R.id.radio_done){
-         status = 1;
-        }else if (selectedId == R.id.radio_want){
+        if (selectedId == R.id.radio_want){
             status = 2;
         }else if (selectedId == R.id.radio_already){
             status = 3;
+        }else if (selectedId == R.id.radio_quit){
+            status = 4;
         }
 
+        book.setStatus(status);
         book.setTitle(textTitle.getText().toString());
         book.setAuthor(textAuthor.getText().toString());
-        book.setStatus(Integer.valueOf(status));
         book.setRate(Float.valueOf(textRate.getText().toString()));
         BookDAO dao = new BookDAO(this);
         dao.save(book);

@@ -40,7 +40,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/concluir"
+        android:text="Concluir"
         android:id="@+id/btnConcluir"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />

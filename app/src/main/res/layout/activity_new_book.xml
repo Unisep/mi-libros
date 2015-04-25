@@ -19,7 +19,7 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtTitulo"
+        android:id="@+id/text_title"
         android:layout_below="@+id/lblTitulo"
         android:layout_alignParentStart="true"/>
 
@@ -32,13 +32,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/txtTitulo" />
+        android:layout_below="@+id/text_title" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:id="@+id/txtData"
+        android:id="@+id/text_author"
         android:layout_below="@+id/lblData"
         android:layout_centerHorizontal="true" android:inputType="text"/>
 
@@ -59,7 +59,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="salvar" />
+        android:onClick="save" />
     <RadioGroup
             android:layout_width="200dp"
             android:layout_height="150dp"
@@ -96,7 +96,7 @@
               android:layout_height="wrap_content"
               android:textAppearance="?android:attr/textAppearanceLarge"
               android:text="@string/label_rate" android:id="@+id/label_rate"
-              android:layout_below="@+id/txtData"
+              android:layout_below="@+id/text_author"
               android:layout_alignParentStart="true"/>
     <EditText android:layout_width="@dimen/rate_dimension"
               android:layout_height="wrap_content"

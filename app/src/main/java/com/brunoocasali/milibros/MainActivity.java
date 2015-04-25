@@ -6,10 +6,9 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
-import br.edu.unisep.gerenciadorzote.adapter.TarefaCursorAdapter;
-import br.edu.unisep.gerenciadorzote.model.TarefaDAO;
-import br.edu.unisep.gerenciadorzote.vo.TarefaVO;
-
+import com.brunoocasali.milibros.adapter.TarefaCursorAdapter;
+import com.brunoocasali.milibros.model.TarefaDAO;
+import com.brunoocasali.milibros.vo.BookVO;
 
 public class MainActivity extends ListActivity {
 
@@ -72,7 +71,7 @@ public class MainActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.mn_novo) {
-            Intent intent = new Intent(this, InclusaoTarefaActivity.class);
+            Intent intent = new Intent(this, NewBookActivity.class);
             startActivityForResult(intent, 0);
         }
         return true;
@@ -83,7 +82,7 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        TarefaVO trabalho = (TarefaVO) data.getSerializableExtra("Tarefa");
+        BookVO trabalho = (BookVO) data.getSerializableExtra("Tarefa");
         if (requestCode == 0 && resultCode == RESULT_OK) {
 
             cursor = dao.listar();

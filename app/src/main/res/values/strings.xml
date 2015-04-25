@@ -7,4 +7,7 @@
     <string name="label_rate">Nota</string>
     <string name="label_status">Estado</string>
     <string name="save_button_text">Guardar!</string>
+
+    <string name="title_activity_new_book">Nuevo Libro!</string>
+
 </resources>

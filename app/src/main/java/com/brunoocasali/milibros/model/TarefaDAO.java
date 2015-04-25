@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.brunoocasali.milibros.vo.TarefaVO;
+import com.brunoocasali.milibros.vo.BookVO;
 
 /**
  * Created by ESutil on 21/04/2015.
@@ -17,14 +17,14 @@ public class TarefaDAO {
         this.helper = new TarefaHelper(context, "TAREFAS", null, 1);
     }
 
-    public void salvar(TarefaVO tarefa){
+    public void salvar(BookVO tarefa){
         // possibilita a aplicação gravar no banco
         SQLiteDatabase db = helper.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
-        valores.put("titulo", tarefa.getTitulo());
-        valores.put("descricao", tarefa.getDescricao());
-        valores.put("prazo", tarefa.getPrazo().getTime());
+        valores.put("titulo", tarefa.getTitle());
+        valores.put("descricao", tarefa.getAuthor());
+        valores.put("prazo", tarefa.getRate().getTime());
 
         db.insert("tarefas", null, valores);
         db.close();

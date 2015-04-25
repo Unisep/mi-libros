@@ -37,13 +37,21 @@ public class NewBookActivity extends Activity {
         BookVO book = new BookVO();
 
         int selectedId = radioGroupStatus.getCheckedRadioButtonId();
-        String status = ((RadioButton) findViewById(selectedId)).getText().toString();
+//        String status = ((RadioButton) findViewById(selectedId)).getText().toString();
+        int status = 4;
+
+        if (selectedId == R.id.radio_done){
+         status = 1;
+        }else if (selectedId == R.id.radio_want){
+            status = 2;
+        }else if (selectedId == R.id.radio_already){
+            status = 3;
+        }
 
         book.setTitle(textTitle.getText().toString());
         book.setAuthor(textAuthor.getText().toString());
         book.setStatus(Integer.valueOf(status));
         book.setRate(Float.valueOf(textRate.getText().toString()));
-
         BookDAO dao = new BookDAO(this);
         dao.save(book);
 

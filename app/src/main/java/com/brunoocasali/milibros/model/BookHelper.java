@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by ESutil on 21/04/2015.
+ * Created by Bruno Casali on 24/04/2015.
  */
 public class BookHelper extends SQLiteOpenHelper {
     public BookHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

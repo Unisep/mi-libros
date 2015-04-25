@@ -11,6 +11,7 @@ public class DatabaseConstraint {
     public static final String TABLE_BOOKS = "books";
 
     // Columns from TABLE_BOOKS
+    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_TITLE = "title";
     public static final String COLUMN_AUTHOR = "author";
     public static final String COLUMN_RATE = "rate";

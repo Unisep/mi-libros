@@ -22,7 +22,7 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         dao = new BookDAO(this);
 
-        cursor = dao.listar();
+        cursor = dao.list();
 
         adapter = new TarefaCursorAdapter(this, cursor, 0);
 
@@ -46,9 +46,9 @@ public class MainActivity extends ListActivity {
             AdapterView.AdapterContextMenuInfo menuInf = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
             long id = menuInf.id;
 
-            dao.excluir(id);
+            dao.destroy(id);
 
-            cursor = dao.listar();
+            cursor = dao.list();
             adapter.changeCursor(cursor);
             adapter.notifyDataSetChanged();
         }
@@ -85,7 +85,7 @@ public class MainActivity extends ListActivity {
         BookVO trabalho = (BookVO) data.getSerializableExtra("Tarefa");
         if (requestCode == 0 && resultCode == RESULT_OK) {
 
-            cursor = dao.listar();
+            cursor = dao.list();
             adapter.changeCursor(cursor);
             adapter.notifyDataSetChanged();
         }

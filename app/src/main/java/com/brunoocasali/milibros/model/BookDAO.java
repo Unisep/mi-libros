@@ -20,31 +20,36 @@ public class BookDAO {
     public void save(BookVO book){
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        ContentValues valores = new ContentValues();
-        valores.put("titulo", book.getTitle());
-        valores.put("descricao", book.getAuthor());
-        valores.put("prazo", book.getRate().getTime());
+        ContentValues values = new ContentValues();
 
-        db.insert("tarefas", null, valores);
+        values.put(DatabaseConstraint.COLUMN_TITLE, book.getTitle());
+        values.put(DatabaseConstraint.COLUMN_AUTHOR, book.getAuthor());
+        values.put(DatabaseConstraint.COLUMN_RATE, book.getRate());
+        values.put(DatabaseConstraint.COLUMN_STATUS, book.getStatus());
+
+        db.insert(DatabaseConstraint.TABLE_BOOKS, null, values);
         db.close();
     }
 
-    public Cursor listar(){
-        // Comunicação somente leitura com o banco.
+    public Cursor list(){
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        String[] colunas = {"_id", "titulo", "descricao", "prazo"};
+        String[] columns = {
+                DatabaseConstraint.COLUMN_ID,
+                DatabaseConstraint.COLUMN_TITLE,
+                DatabaseConstraint.COLUMN_AUTHOR,
+                DatabaseConstraint.COLUMN_RATE,
+                DatabaseConstraint.COLUMN_STATUS };
 
-        return db.query("tarefas", colunas, null, null, null, null, null);
+        return db.query(DatabaseConstraint.TABLE_BOOKS, columns, null, null, null, null, null);
     }
 
-    public void excluir(long id){
-
+    public void destroy(long id){
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        String[] valoresWhere = {String.valueOf(id)};
+        String[] condition = { String.valueOf(id) };
 
-        db.delete("tarefas", "_id = ?", valoresWhere);
+        db.delete(DatabaseConstraint.TABLE_BOOKS, "_id = ?", condition);
         db.close();
     }
 }

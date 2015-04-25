@@ -7,24 +7,23 @@ import android.database.sqlite.SQLiteDatabase;
 import com.brunoocasali.milibros.vo.BookVO;
 
 /**
- * Created by ESutil on 21/04/2015.
+ * Created by Bruno Casali on 24/04/2015.
  */
-public class TarefaDAO {
+public class BookDAO {
 
-    private TarefaHelper helper;
+    private BookHelper helper;
 
-    public TarefaDAO(Context context){
-        this.helper = new TarefaHelper(context, "TAREFAS", null, 1);
+    public BookDAO(Context context){
+        this.helper = new BookHelper(context, DatabaseConstraint.DATABASE_NAME, null, 1);
     }
 
-    public void salvar(BookVO tarefa){
-        // possibilita a aplicação gravar no banco
+    public void save(BookVO book){
         SQLiteDatabase db = helper.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
-        valores.put("titulo", tarefa.getTitle());
-        valores.put("descricao", tarefa.getAuthor());
-        valores.put("prazo", tarefa.getRate().getTime());
+        valores.put("titulo", book.getTitle());
+        valores.put("descricao", book.getAuthor());
+        valores.put("prazo", book.getRate().getTime());
 
         db.insert("tarefas", null, valores);
         db.close();

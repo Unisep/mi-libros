@@ -7,21 +7,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by ESutil on 21/04/2015.
  */
-public class TarefaHelper  extends SQLiteOpenHelper {
-    public TarefaHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+public class BookHelper extends SQLiteOpenHelper {
+    public BookHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    // Método de criação das tabelas no banco.
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table tarefas (" +
-                " _id integer primary key, " +
-                " titulo text, " +
-                " descricao text, " +
-                " prazo integer)";
+        String sql = "CREATE TABLE books (" +
+                      " _id INTEGER primary key, " +
+                      " title TEXT, " +
+                      " author TEXT, " +
+                      " rate REAL, " +
+                      " status INTEGER);";
 
-        // Executa o comando sql no banco.
         db.execSQL(sql);
     }
 

@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import com.brunoocasali.milibros.model.TarefaDAO;
+import com.brunoocasali.milibros.model.BookDAO;
 import com.brunoocasali.milibros.vo.BookVO;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by Bruno Casali on 24/04/2015.
@@ -37,35 +34,18 @@ public class NewBookActivity extends Activity {
     }
 
     public void save(View v) {
-        BookVO tarefa = new BookVO();
+        BookVO book = new BookVO();
 
-        tarefa.setTitle(textTitle.getText().toString());
-        tarefa.setAuthor(textRate.getText().toString());
+        int selectedId = radioGroupStatus.getCheckedRadioButtonId();
+        String status = ((RadioButton) findViewById(selectedId)).getText().toString();
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        String data = txtData.getText().toString();
+        book.setTitle(textTitle.getText().toString());
+        book.setAuthor(textRate.getText().toString());
+        book.setStatus(Integer.valueOf(status));
+        book.setRate(Float.valueOf(textRate.getText().toString()));
 
-        try {
-            tarefa.setRate(df.parse(data));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-        /*
-        int selectedId = radioSexGroup.getCheckedRadioButtonId();
-
-            // find the radiobutton by returned id
-                radioSexButton = (RadioButton) findViewById(selectedId);
-
-            Toast.makeText(MyAndroidAppActivity.this,
-                radioSexButton.getText(), Toast.LENGTH_SHORT).show();
-         */
-
-
-
-        TarefaDAO dao = new TarefaDAO(this);
-        dao.salvar(tarefa);
+        BookDAO dao = new BookDAO(this);
+        dao.save(book);
 
         Intent retorno = new Intent();
 

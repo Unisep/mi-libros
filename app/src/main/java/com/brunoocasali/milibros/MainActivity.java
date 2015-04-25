@@ -7,20 +7,20 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
 import com.brunoocasali.milibros.adapter.TarefaCursorAdapter;
-import com.brunoocasali.milibros.model.TarefaDAO;
+import com.brunoocasali.milibros.model.BookDAO;
 import com.brunoocasali.milibros.vo.BookVO;
 
 public class MainActivity extends ListActivity {
 
     private TarefaCursorAdapter adapter;
     private Cursor cursor;
-    private TarefaDAO dao;
+    private BookDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dao = new TarefaDAO(this);
+        dao = new BookDAO(this);
 
         cursor = dao.listar();
 

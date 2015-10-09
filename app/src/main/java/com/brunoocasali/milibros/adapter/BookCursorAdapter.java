@@ -36,7 +36,7 @@ public class BookCursorAdapter extends CursorAdapter {
         labelTitle.setText(cursor.getString(cursor.getColumnIndex(DatabaseConstraint.COLUMN_TITLE)));
 
         TextView labelRate = (TextView) view.findViewById(R.id.label_rating);
-        
+
         Float value = cursor.getFloat(cursor.getColumnIndex(DatabaseConstraint.COLUMN_RATE));
         if (value > 0)
             labelRate.setText(String.valueOf(value));
